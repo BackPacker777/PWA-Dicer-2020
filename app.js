@@ -1,7 +1,6 @@
 'use strict';
 
 const DATA_HANDLER = require('./node/DataHandler');
-const FORMIDABLE = require('formidable');
 
 /**
  * Web server utilizing SSL
@@ -15,9 +14,9 @@ class app {
      * @desc instantiates DataHandler object
      */
     constructor() {
-        this.data_handler = new DATA_HANDLER();
-        this.ejsData = null;
-        this.fileName = `index.ejs`;
+        this.#data_handler = new DATA_HANDLER();
+        this.#ejsData = null;
+        this.#fileName = `index.ejs`;
         this.loadServer();
     }
 
@@ -56,8 +55,8 @@ class app {
                     response.setHeader('Cache-Control', 'max-age=86400');
                     response.writeHead(200, {'Content-Type': contentType});
                     response.end(EJS.render(string, {
-                        data: this.ejsData,
-                        filename: this.fileName
+                        data: this.#ejsData,
+                        filename: this.#fileName
                     }));
                 } else {
                     response.setHeader('Cache-Control', 'max-age=86400');
@@ -68,82 +67,7 @@ class app {
 
             if (request.method === 'POST') {
                 if (request.headers['x-requested-with'] === 'fetch.0') {
-                    let formData = {};
-                    new FORMIDABLE.IncomingForm().parse(request).on('field', (field, name) => {
-                        formData[field] = name;
-                    }).on('error', (err) => {
-                        next(err);
-                    }).on('end', () => {
-                        this.data_handler.insertRow(formData);
-                    });
-                } else if (request.headers['x-requested-with'] === 'fetch.1') {
-                    this.data_handler.getAllAssets(function (fetchedData) {
-                        response.setHeader('Cache-Control', 'max-age=86400');
-                        response.writeHead(200, {'content-type': 'text/plain'});
-                        response.end(JSON.stringify(fetchedData));
-                    });
-                } else if (request.headers['x-requested-with'] === 'fetch.2') {
-                    let body = [];
-                    request.on('data', (chunk) => {
-                        body.push(chunk);
-                    }).on('end', () => {
-                        body = Buffer.concat(body).toString();
-                        this.data_handler.deleteAssets(body);
-                    });
-                } else if (request.headers['x-requested-with'] === 'fetch.3') {
-                    let body = [];
-                    request.on('data', (chunk) => {
-                        body.push(chunk);
-                    }).on('error', (err) => {
-                        next(err);
-                    }).on('end', () => {
-                        body = Buffer.concat(body).toString().toUpperCase();
-                        this.data_handler.queryData(body, function (fetchedData) {
-                            response.setHeader('Cache-Control', 'max-age=86400');
-                            response.writeHead(200, {'content-type': 'text/plain'});
-                            response.end(JSON.stringify(fetchedData));
-                        });
-                    });
-                } else if (request.headers['x-requested-with'] === 'fetch.4') {
-                    DATA_HANDLER.getAssetData('info', (assetData) => {
-                        assetData = JSON.stringify(assetData);
-                        response.writeHead(200, {'content-type': 'application/json'});
-                        response.end(assetData);
-                    });
-                }  else if (request.headers['x-requested-with'] === 'fetch.5') {
-                    DATA_HANDLER.getAssetData('models', (assetData) => {
-                        assetData = JSON.stringify(assetData);
-                        response.writeHead(200, {'content-type': 'application/json'});
-                        response.end(assetData);
-                    });
-                } else if (request.headers['x-requested-with'] === 'fetch.6') {
-                    let body = [];
-                    request.on('data', (chunk) => {
-                        body.push(chunk);
-                    }).on('error', (err) => {
-                        next(err);
-                    }).on('end', () => {
-                        body = Buffer.concat(body).toString();
-                        this.data_handler.queryTag(body, function (tagExists) {
-                            response.setHeader('Cache-Control', 'max-age=86400');
-                            response.writeHead(200, {'content-type': 'text/plain'});
-                            response.end(JSON.stringify(tagExists));
-                        });
-                    });
-                } else if (request.headers['x-requested-with'] === 'fetch.7') {
-                    let body = [];
-                    request.on('data', (chunk) => {
-                        body.push(chunk);
-                    }).on('error', (err) => {
-                        next(err);
-                    }).on('end', () => {
-                        body = Buffer.concat(body).toString();
-                        this.data_handler.queryEditTag(body, function (assetProperties) {
-                            response.setHeader('Cache-Control', 'max-age=86400');
-                            response.writeHead(200, {'content-type': 'text/plain'});
-                            response.end(JSON.stringify(assetProperties));
-                        });
-                    });
+                   console.log(`POST`);
                 } else {
                     console.log(`Yo, somethings super wrong BDH!`);
                 }

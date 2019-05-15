@@ -1,6 +1,6 @@
 {
   "name": "the_dicer",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Simple dice rolling PWA",
   "main": "bin/dicer_server",
   "scripts": {
@@ -13,9 +13,7 @@
   },
   "dependencies": {
     "ejs": "latest",
-    "formidable": "latest",
-    "jsdoc": "latest",
-    "jsdocs": "^1.0.0",
+    "jsdoc": "^3.6.2",
     "node-sass": "latest"
   }
 }

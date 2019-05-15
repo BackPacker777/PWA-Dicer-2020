@@ -1,6 +1,7 @@
 @import 'utility';
 @import 'slider';
 @import "bates_grid";
+@import "button_animation";
 
 body, html {
      box-sizing: border-box;
@@ -75,11 +76,6 @@ body {
 
      #rollButtonContainer {
           margin-top: 40px;
-          height: 60px;
-     }
-
-     #rollButton {
-          width: 100%;
-          background-color: getColor(gry);
+          height: 50px;
      }
 }
