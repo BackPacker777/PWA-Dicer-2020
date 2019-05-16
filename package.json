@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "ejs": "latest",
-    "jsdoc": "^3.6.2",
+    "jsdoc": "latest",
     "node-sass": "latest"
   }
 }

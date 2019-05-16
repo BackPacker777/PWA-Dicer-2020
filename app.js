@@ -24,11 +24,11 @@ class app {
      * @desc Route & mime type handler
      */
     loadServer() {
-        // const HTTPS = require('https');
-        const HTTP = require('http');
+        const HTTPS = require('https');
+        // const HTTP = require('http');
         const EJS = require('ejs');
-        const PORT = process.env.PORT || 8811;
-        // const PORT = process.env.PORT || 443;
+        // const PORT = process.env.PORT || 8811;
+        const PORT = process.env.PORT || 8443;
         const SSL_OPTIONS = {
             key: DATA_HANDLER.getKey(),
             cert: DATA_HANDLER.getCert(),
@@ -36,8 +36,8 @@ class app {
             rejectUnauthorized: false
         };
 
-        // HTTPS.createServer(SSL_OPTIONS, async (request, response) => {
-        HTTP.createServer(async (request, response) => {
+        HTTPS.createServer(SSL_OPTIONS, async (request, response) => {
+        // HTTP.createServer(async (request, response) => {
 
             let httpHandler = (error, string, contentType) => {
                 /*if (request.headers['x-forwarded-proto'] !== 'https') {
