@@ -24,10 +24,9 @@ class app {
      * @desc Route & mime type handler
      */
     loadServer() {
-        const HTTPS = require('https');
         // const HTTP = require('http');
+        const HTTP2 = require('http2');
         const EJS = require('ejs');
-        // const PORT = process.env.PORT || 8811;
         const PORT = process.env.PORT || 8443;
         const SSL_OPTIONS = {
             key: DATA_HANDLER.getKey(),
@@ -36,15 +35,17 @@ class app {
             rejectUnauthorized: false
         };
 
-        HTTPS.createServer(SSL_OPTIONS, async (request, response) => {
-        // HTTP.createServer(async (request, response) => {
+        // HTTP.createServer((request, response) => {
+        //     response.writeHead(301, {
+        //         'Location': `https://${request.headers['host']}${request.url}:${PORT}`
+        //     });
+        //     response.end();
+        // }).listen(80);
+
+        HTTP2.createSecureServer(SSL_OPTIONS, async (request, response) => {
 
             let httpHandler = (error, string, contentType) => {
-                /*if (request.headers['x-forwarded-proto'] !== 'https') {
-                    // response.redirect(`https://${request.header('host')}${request.url}`);
-                    response.writeHead(301, {Location: `https://${request.headers['host']}${request.url}`});
-                    response.end();
-                } else */if (error) {
+                if (error) {
                     response.writeHead(500, {'Content-Type': 'text/plain'});
                     response.end('An error has occurred: ' + error.message);
                 } else if (contentType.indexOf('css') >= 0 || contentType.indexOf('js') >= 0) {
