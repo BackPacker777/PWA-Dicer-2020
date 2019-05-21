@@ -1,6 +1,7 @@
 @font-face {
      font-family: "Uncial_Antiqua";
-     src: url("../fonts/Uncial_Antiqua.woff2") format('woff2');
+     font-display: auto;
+     src: local("Uncial_Antiqua"), url("../fonts/Uncial_Antiqua.woff2") format('woff2');
 }
 
 $colors: (

@@ -3,7 +3,7 @@
 const DATA_HANDLER = require('./node/DataHandler');
 
 /**
- * Web server utilizing SSL
+ * @desc Web server utilizing HTTP/2
  */
 class app {
     #data_handler;
@@ -24,10 +24,10 @@ class app {
      * @desc Route & mime type handler
      */
     loadServer() {
-        // const HTTP = require('http');
+        const HTTP = require('http');
         const HTTP2 = require('http2');
         const EJS = require('ejs');
-        const PORT = process.env.PORT || 8443;
+        const PORT = process.env.PORT || 443;
         const SSL_OPTIONS = {
             key: DATA_HANDLER.getKey(),
             cert: DATA_HANDLER.getCert(),
@@ -35,12 +35,12 @@ class app {
             rejectUnauthorized: false
         };
 
-        // HTTP.createServer((request, response) => {
-        //     response.writeHead(301, {
-        //         'Location': `https://${request.headers['host']}${request.url}:${PORT}`
-        //     });
-        //     response.end();
-        // }).listen(80);
+        HTTP.createServer((request, response) => {
+            response.writeHead(301, {
+                'Location': `https://${request.headers['host']}${request.url}`
+            });
+            response.end();
+        }).listen(80);
 
         HTTP2.createSecureServer(SSL_OPTIONS, async (request, response) => {
 

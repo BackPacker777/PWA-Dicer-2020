@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Uncial_Antiqua";
-  src: url("../fonts/Uncial_Antiqua.woff2") format("woff2"); }
+  font-display: auto;
+  src: local("Uncial_Antiqua"), url("../fonts/Uncial_Antiqua.woff2") format("woff2"); }
 
 input[type=range] {
   -webkit-appearance: none !important;
@@ -34,86 +35,73 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   max-width: 100%;
   min-width: 100%;
   margin: 0 auto; }
-
-.grid .row {
-  max-width: 100%;
-  min-width: 100%;
-  min-height: 5%;
-  margin: 0 auto;
-  text-align: center; }
-
-.grid .row .cell-1 {
-  width: 8%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-2 {
-  width: 16%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-3 {
-  width: 24%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-4 {
-  width: 32%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative;
-  margin: 0 auto; }
-
-.grid .row .cell-5 {
-  width: 40%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-6 {
-  width: 48%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-7 {
-  width: 56%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-8 {
-  width: 64%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-9 {
-  width: 72%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-10 {
-  width: 80%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-11 {
-  width: 88%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
-
-.grid .row .cell-12 {
-  width: 100%;
-  min-height: 5%;
-  display: inline-block;
-  position: relative; }
+  .grid .row {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 5%;
+    margin: 0 auto;
+    text-align: center; }
+    .grid .row .cell-1 {
+      width: 8%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-2 {
+      width: 16%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-3 {
+      width: 24%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-4 {
+      width: 32%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative;
+      margin: 0 auto; }
+    .grid .row .cell-5 {
+      width: 40%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-6 {
+      width: 48%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-7 {
+      width: 56%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-8 {
+      width: 64%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-9 {
+      width: 72%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-10 {
+      width: 80%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-11 {
+      width: 88%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
+    .grid .row .cell-12 {
+      width: 100%;
+      min-height: 5%;
+      display: inline-block;
+      position: relative; }
 
 .cbutton {
   position: relative;
@@ -157,53 +145,40 @@ body, html {
 
 body {
   font-family: 'Uncial_Antiqua'; }
-
-body img {
-  max-width: 100%; }
-
-body .bgColor {
-  background-color: #0c3d5d;
-  color: white; }
-
-body #titleBar {
-  text-align: left;
-  margin-bottom: 8px; }
-
-body #titleBar P {
-  padding-left: 6px; }
-
-body #results {
-  height: 70px;
-  background-color: gray; }
-
-body #resultsLabel {
-  margin-top: -12px;
-  margin-bottom: 10px; }
-
-body #totalResultLabel {
-  margin-top: -12px;
-  margin-bottom: 10px; }
-
-body #dieQtySlider {
-  z-index: 10; }
-
-body #dieQtyLabel {
-  z-index: -1;
-  margin-top: 20px;
-  margin-bottom: 30px; }
-
-body #totalResult {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 70px;
-  background-color: gray; }
-
-body .die {
-  margin: 0 6px 0 6px; }
-
-body .dieLabel {
-  margin-bottom: -2px; }
-
-body #rollButtonContainer {
-  margin-top: 40px;
-  height: 50px; }
+  body img {
+    max-width: 100%; }
+  body .bgColor {
+    background-color: #0c3d5d;
+    color: white; }
+  body #titleBar {
+    text-align: left;
+    margin-bottom: 8px; }
+    body #titleBar P {
+      padding-left: 6px; }
+  body #results {
+    height: 70px;
+    background-color: gray; }
+  body #resultsLabel {
+    margin-top: -12px;
+    margin-bottom: 10px; }
+  body #totalResultLabel {
+    margin-top: -12px;
+    margin-bottom: 10px; }
+  body #dieQtySlider {
+    z-index: 10; }
+  body #dieQtyLabel {
+    z-index: -1;
+    margin-top: 20px;
+    margin-bottom: 30px; }
+  body #totalResult {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 70px;
+    background-color: gray; }
+  body .die {
+    margin: 0 6px 0 6px; }
+  body .dieLabel {
+    margin-bottom: -2px; }
+  body #rollButtonContainer {
+    margin-top: 40px;
+    height: 50px; }

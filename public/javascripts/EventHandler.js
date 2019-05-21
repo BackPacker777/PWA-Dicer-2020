@@ -25,9 +25,13 @@ export default class EventHandler {
      */
     setDieQty() {
         this.#dieQty = 0;
-        document.getElementById('slider').addEventListener('input', () => {
-            document.getElementById('dieQty').innerText = document.getElementById('slider').value;
-            this.#dieQty = document.getElementById('slider').value;
+        document.getElementById('slider').addEventListener('input', async () => {
+            try {
+                document.getElementById('dieQty').innerText = await document.getElementById('slider').value;
+                this.#dieQty = await document.getElementById('slider').value;
+            } catch (error) {
+                console.log(error);
+            }
         });
     }
 
@@ -38,9 +42,13 @@ export default class EventHandler {
         this.#dieType = 0;
         const dieTypes = document.forms["rollResults"].elements["dieType"];
         for (let i = 0; i < dieTypes.length; i++) {
-            dieTypes[i].addEventListener('click', (event) => {
+            dieTypes[i].addEventListener('click', async (event) => {
                 event.stopImmediatePropagation();
-                this.#dieType = dieTypes[i].value;
+                try {
+                    this.#dieType = await dieTypes[i].value;
+                } catch (error) {
+                    console.log(error);
+                }
             });
         }
     }
@@ -49,7 +57,7 @@ export default class EventHandler {
      * @desc Worker method to roll dice
      */
     handleDiceRoll() {
-        document.getElementById('rollButton').addEventListener('click', (event) => {
+        document.getElementById('rollButton').addEventListener('click', async (event) => {
             event.stopImmediatePropagation();
             let finalResult = 0;
             let individuals = '';
@@ -63,8 +71,12 @@ export default class EventHandler {
                     individuals += results[i];
                 }
             }
-            document.getElementById('results').innerText = individuals;
-            document.getElementById('totalResult').innerText = String(finalResult);
+            try {
+                document.getElementById('results').innerText = await individuals;
+                document.getElementById('totalResult').innerText = await String(finalResult);
+            } catch (error) {
+                console.log(error);
+            }
         });
     }
 }
