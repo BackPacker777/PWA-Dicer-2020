@@ -12,8 +12,28 @@
     "node": ">= 12.2.0"
   },
   "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "ejs": "latest",
-    "jsdoc": "latest",
-    "node-sass": "latest"
-  }
+    "gulp-babel": "^8.0.0",
+    "gulp-git": "^2.9.0",
+    "gulp-minify-ejs": "^1.0.3",
+    "gulp-sass": "^4.0.2",
+    "gulp-terser": "^1.2.0",
+    "jsdoc": "latest"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BackPacker777/PWA-Dicer-2020.git"
+  },
+  "keywords": [
+    "pwa"
+  ],
+  "bugs": {
+    "url": "https://github.com/BackPacker777/PWA-Dicer-2020/issues"
+  },
+  "homepage": "https://github.com/BackPacker777/PWA-Dicer-2020#readme"
 }
